@@ -11,7 +11,6 @@ public class App {
     	
     	if( args.length == 0 ) {
     		classToRun = "App";
-    		
     	} else {
     		classToRun = args[0];
     	}
