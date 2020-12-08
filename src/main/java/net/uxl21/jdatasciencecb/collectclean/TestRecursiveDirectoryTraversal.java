@@ -1,25 +1,29 @@
 package net.uxl21.jdatasciencecb.collectclean;
 
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
-import net.uxl21.jdatasciencecb.JDSRunnable;
 
-
-public class TestRecursiveDirectoryTraversal implements JDSRunnable {
-
-	public void run(String[] args) {
-		String rootDir;
+public class TestRecursiveDirectoryTraversal extends CollectCleanRunnable {
+	
+	
+	public TestRecursiveDirectoryTraversal(String[] args) {
+		super(args);
+	}
+	
+	
+	@Override
+	public void run() {
+		Set<File> files = this.listFiles(new File(this.getRootDir()));
+		StringBuffer filesStr = new StringBuffer();
 		
-		if( args.length == 0 ) {
-			rootDir = "D:\\20_AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb";
+		files.forEach(file -> {
+			filesStr.append(file.getAbsolutePath()).append("\n");
+		});
 		
-		} else {
-			rootDir = args[0];
-		}
-		
-		System.out.println( listFiles(new File(rootDir)) );
+		this.logger.info(filesStr.toString());
 	}
 	
 	
