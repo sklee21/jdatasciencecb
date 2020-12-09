@@ -1,6 +1,8 @@
 {
 	"defaultClassToRun": "collectclean.TestRecursiveDirectoryTraversal",
 	"defaultRootDir": "D:\\20_AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb",
-	"defaultFileDir": "D:\\20_AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb\\src\\main\\resources\\config",
-	"defaultFileToRead": "jds-config.json"
+	
+	"fileDir": "D:\\20_AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb\\src\\main\\resources\\files",	
+	"txtFileToRead": "THIRDPARTYLICENSEREADME.txt",
+	"pdfFileToRead": "THIRDPARTYLICENSEREADME.pdf"
 }

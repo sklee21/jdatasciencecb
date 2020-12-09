@@ -13,27 +13,17 @@ public abstract class CollectCleanRunnable {
 	
 	protected ConfigSet configSet = ConfigSet.getInstance();
 	
-	private String rootDir = null;
+	
+	protected String[] params;
 	
 	
 	
 	public CollectCleanRunnable(String[] args) {
-		if( args.length == 0 ) {
-			this.rootDir = ConfigSet.getInstance().getString("defaultRootDir");
-		
-		} else {
-			this.rootDir = args[0];
-		}
+		this.params = args;
 	}
 	
 	
 	
 	public abstract void run();
-	
-	
-	
-	public String getRootDir() {
-		return this.rootDir;
-	}
 
 }

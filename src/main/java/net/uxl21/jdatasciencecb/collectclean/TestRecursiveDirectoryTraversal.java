@@ -5,6 +5,8 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
+import net.uxl21.jdatasciencecb.ConfigSet;
+
 
 public class TestRecursiveDirectoryTraversal extends CollectCleanRunnable {
 	
@@ -16,7 +18,7 @@ public class TestRecursiveDirectoryTraversal extends CollectCleanRunnable {
 	
 	@Override
 	public void run() {
-		Set<File> files = this.listFiles(new File(this.getRootDir()));
+		Set<File> files = this.listFiles(new File(this.configSet.getString("defaultRootDir")));
 		StringBuffer filesStr = new StringBuffer();
 		
 		files.forEach(file -> {

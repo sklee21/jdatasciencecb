@@ -16,7 +16,7 @@ public class FileListing extends CollectCleanRunnable {
 
 	@Override
 	public void run() {
-		Collection<File> files = FileUtils.listFiles(new File(this.getRootDir()), TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE);
+		Collection<File> files = FileUtils.listFiles(new File(this.configSet.getString("defaultRootDir")), TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE);
 		StringBuffer filesStr = new StringBuffer();
 		
 		files.forEach(file -> {

@@ -34,6 +34,10 @@ public class App {
 	 * Constructor
 	 */
 	public App(String[] args) {
+		this.logger.debug("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx: " + args.length);
+		Arrays.stream(args).forEach(this.logger::debug);
+		this.logger.debug("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
+		
     	if( args.length == 0 ) {
     		this.classToRun += this.configSet.getString("defaultClassToRun");
     		this.params = new String[0];
@@ -44,7 +48,11 @@ public class App {
     		
     	} else {
     		this.classToRun += args[0];
-    		this.params = Arrays.copyOfRange(args, 1, args.length - 1);
+    		this.params = Arrays.copyOfRange(args, 1, args.length);
+
+    		this.logger.debug("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy: " + this.params.length);
+    		Arrays.stream(this.params).forEach(this.logger::debug);
+    		this.logger.debug("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n\n");
     	}
 	}
 	

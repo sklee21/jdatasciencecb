@@ -8,15 +8,12 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 import net.uxl21.jdatasciencecb.util.FileEncodingDetector;
-import net.uxl21.jdatasciencecb.util.TextEncoder;
 
-public class ReadFile extends CollectCleanRunnable {
-	
-	public ReadFile(String[] args) {
+public class TextCleaner extends CollectCleanRunnable {
+
+	public TextCleaner(String[] args) {
 		super(args);
 	}
-	
-	
 
 	@Override
 	public void run() {
@@ -38,12 +35,27 @@ public class ReadFile extends CollectCleanRunnable {
 				filesStr.append(str).append("\n");
 			});
 			
-			this.logger.info("\n" + new TextEncoder(filesStr.toString()).encode("UTF-8"));
+			String contents = filesStr.toString();
+			
+			this.logger.info("\n>>>>>>>>>>>>>>>>>>>>>>>> ORIGINAL: => \n" + contents);
+			this.logger.info("\n>>>>>>>>>>>>>>>>>>>>>>>> CLEANED : => \n" + this.cleanning(contents));
+			
 			
 		} catch (IOException e) {
 			this.logger.error(e);
 			e.printStackTrace();
 		} 
+	}
+	
+	
+	public String cleanning(String text) {
+		text = text.replaceAll("[^p{ASCII}]", "");
+		text = text.replaceAll("s+", " ");
+		text = text.replaceAll("p{Cntrl}", "");
+		text = text.replaceAll("[^p{Print}]", "");
+		text = text.replaceAll("p{C}", "");
+		
+		return text;
 	}
 
 }
