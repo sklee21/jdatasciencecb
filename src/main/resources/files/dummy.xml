@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book>
+	<author>
+		<firstname>Alice</firstname>
+		<lastname>Peterson</lastname>
+	</author>
+	<author>
+		<firstname>John</firstname>
+		<lastname>Doe</lastname>
+	</author>
+</book>

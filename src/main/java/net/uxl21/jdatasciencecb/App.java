@@ -50,9 +50,9 @@ public class App {
     		this.classToRun += args[0];
     		this.params = Arrays.copyOfRange(args, 1, args.length);
 
-    		this.logger.debug("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy: " + this.params.length);
-    		Arrays.stream(this.params).forEach(this.logger::debug);
-    		this.logger.debug("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n\n");
+    		//this.logger.debug("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy: " + this.params.length);
+    		//Arrays.stream(this.params).forEach(this.logger::debug);
+    		//this.logger.debug("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n\n");
     	}
 	}
 	
