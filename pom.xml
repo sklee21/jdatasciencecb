@@ -20,6 +20,25 @@
 		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
 	
+	
+	<profiles>
+		<profile>
+			<id>win</id>
+			<activation>
+			    <activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<env>win</env>
+			</properties>
+		</profile>
+		<profile>
+			<id>mac</id>
+			<properties>
+				<env>mac</env>
+			</properties>
+		</profile>
+	</profiles>
+	
 
 	<dependencies>
 		<dependency>
@@ -161,6 +180,9 @@
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources-${env}</directory>
 			</resource>
 		</resources>
 	</build>

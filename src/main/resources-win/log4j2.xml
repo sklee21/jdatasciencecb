@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+	<Properties>
+		<!--
+		<Property name="logNm">logtest</Property>
+		<Property name="layoutPattern">%d [%t] %-5level %c(%M:%L) - %m%n</Property>
+		-->
+		<Property name="pattern">%d{yyyy-MM-dd hh:mm:ss} [%c{1}] %m%n</Property>
+	</Properties>
+	
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${pattern}" />
+		</Console>
+		
+		<!--
+		<RollingFile name="file" fileName="/log/${logNm}.log"
+			filePattern="/log/logs/${logNm}_%d{yyyy-MM-dd}_%i.log">
+			<PatternLayout pattern="${layoutPattern}" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10MB" />
+				<TimeBasedTriggeringPolicy module="true" interval="1" />
+			</Policies>
+			<DefaultRolloverStrategy max="500" fileIndex="min" />
+		</RollingFile>
+		-->
+	</Appenders>
+
+	<Loggers>
+		<!-- 기본 레벨은 debug -->
+		<Root level="debug" additivity="false">
+			<AppenderRef ref="console" />
+		</Root>
+
+		<!-- 스프링 프레임워크에서 찍는건 level을 info로 설정 -->
+		<!--
+		<logger name="org.springframework" level="info"
+			additivity="false">
+			<AppenderRef ref="console" />
+			<AppenderRef ref="file" />
+		</logger>
+		-->
+		
+		<!-- 다른 기본 패키지도 설정 제어 가능하다. -->
+		<!--
+		<logger name="org.apache.commons.digester" level="info"
+			additivity="false">
+			<AppenderRef ref="console" />
+			<AppenderRef ref="file" />
+		</logger>
+		-->
+
+		<!-- rolling file에는 debug, console에는 info 분리하여 처리 가능하다. -->
+		<!--
+		<logger name="com.test" additivity="false">
+			<AppenderRef ref="console" level="info" />
+			<AppenderRef ref="file" level="debug" />
+		</logger>
+		-->
+	</Loggers>
+	
+</Configuration>

@@ -1,0 +1,11 @@
+{
+	"defaultClassToRun": "collectclean.TestRecursiveDirectoryTraversal",
+	"defaultRootDir": "D:\\20_AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb",
+	
+	"fileDir": "D:\\20_AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb\\src\\main\\resources\\files",	
+	"txtFileToRead": "THIRDPARTYLICENSEREADME.txt",
+	"pdfFileToRead": "THIRDPARTYLICENSEREADME.pdf",
+	"csvFileToRead": "csv_data.csv",
+	"tsvFileToRead": "tsv_data.tsv",
+	"xmlFileToRead": "dummy.xml"
+}
