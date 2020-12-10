@@ -7,5 +7,9 @@
 	"pdfFileToRead": "THIRDPARTYLICENSEREADME.pdf",
 	"csvFileToRead": "csv_data.csv",
 	"tsvFileToRead": "tsv_data.tsv",
-	"xmlFileToRead": "dummy.xml"
+	"xmlFileToRead": "dummy.xml",
+	
+	"mysqlUser": "sklee21",
+	"mysqlPswd": "skl21C@!",
+	"mysqlJdbcUrl": "jdbc:mysql://localhost:3306/DATA_SCIENCE?characterEncoding=UTF-8&serverTimezone=UTC"
 }

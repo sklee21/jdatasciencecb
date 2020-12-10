@@ -5,7 +5,9 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 
-public class ReadFileACIO extends CollectCleanRunnable {
+import net.uxl21.jdatasciencecb.JDSRunnable;
+
+public class ReadFileACIO extends JDSRunnable {
 
 	public ReadFileACIO(String[] args) {
 		super(args);

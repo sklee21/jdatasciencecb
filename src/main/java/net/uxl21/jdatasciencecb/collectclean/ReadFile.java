@@ -7,10 +7,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+import net.uxl21.jdatasciencecb.JDSRunnable;
 import net.uxl21.jdatasciencecb.util.FileEncodingDetector;
 import net.uxl21.jdatasciencecb.util.TextEncoder;
 
-public class ReadFile extends CollectCleanRunnable {
+public class ReadFile extends JDSRunnable {
 	
 	public ReadFile(String[] args) {
 		super(args);

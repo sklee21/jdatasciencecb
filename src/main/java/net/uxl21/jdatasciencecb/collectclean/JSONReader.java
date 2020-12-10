@@ -7,7 +7,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class JSONReader extends CollectCleanRunnable {
+import net.uxl21.jdatasciencecb.JDSRunnable;
+
+public class JSONReader extends JDSRunnable {
 
 	public JSONReader(String[] args) {
 		super(args);

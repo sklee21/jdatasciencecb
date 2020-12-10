@@ -8,7 +8,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class JSoupParser extends CollectCleanRunnable {
+import net.uxl21.jdatasciencecb.JDSRunnable;
+
+public class JSoupParser extends JDSRunnable {
 
 	public JSoupParser(String[] args) {
 		super(args);
@@ -37,16 +39,37 @@ public class JSoupParser extends CollectCleanRunnable {
 		
 		if( doc != null ) {
 			String title = doc.title();
-			//String bodyText = doc.body().text();
-			Elements links = doc.select("a[href]");
-			
 			this.logger.info("Title = " + title);
 			
+			
+			/*
+			Elements links = doc.select("a[href]");
+
 			for(Element link : links) {
 				this.logger.info(
 					//link.attr("href") + "\t" + link.text() + "\t" + link.outerHtml() + "\t" + link.html()
 					link.attr("href") + "\t=>\t" + link.text()
 				);
+			}
+			*/
+			
+			Elements elements = doc.select("table.tbl_data");
+			
+			this.parseLotWinList(elements);
+		}
+	}
+	
+	
+	protected void parseLotWinList(Elements elements) {
+		for(Element element : elements) {
+			Elements tbody = element.getElementsByTag("tbody");
+			
+			if( tbody.size() > 0 ) {
+				Elements trs = tbody.get(0).children();
+				
+				for(Element tr : trs) {
+					this.logger.info(tr.text());
+				}
 			}
 		}
 	}

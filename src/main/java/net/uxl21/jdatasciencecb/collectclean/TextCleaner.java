@@ -7,9 +7,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+import net.uxl21.jdatasciencecb.JDSRunnable;
 import net.uxl21.jdatasciencecb.util.FileEncodingDetector;
 
-public class TextCleaner extends CollectCleanRunnable {
+public class TextCleaner extends JDSRunnable {
 
 	public TextCleaner(String[] args) {
 		super(args);

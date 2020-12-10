@@ -9,7 +9,9 @@ import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.sax.BodyContentHandler;
 
-public class TikaReader extends CollectCleanRunnable {
+import net.uxl21.jdatasciencecb.JDSRunnable;
+
+public class TikaReader extends JDSRunnable {
 
 	public TikaReader(String[] args) {
 		super(args);

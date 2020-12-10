@@ -6,7 +6,9 @@ import java.util.Collection;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 
-public class FileListing extends CollectCleanRunnable {
+import net.uxl21.jdatasciencecb.JDSRunnable;
+
+public class FileListing extends JDSRunnable {
 	
 	public FileListing(String[] args) {
 		super(args);

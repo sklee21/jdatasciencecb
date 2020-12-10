@@ -8,7 +8,9 @@ import com.univocity.parsers.common.processor.RowListProcessor;
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
 
-public class UnivocityCSV extends CollectCleanRunnable {
+import net.uxl21.jdatasciencecb.JDSRunnable;
+
+public class UnivocityCSV extends JDSRunnable {
 
 	public UnivocityCSV(String[] args) {
 		super(args);

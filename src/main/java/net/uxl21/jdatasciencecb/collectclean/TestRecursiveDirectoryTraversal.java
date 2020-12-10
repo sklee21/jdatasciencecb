@@ -5,8 +5,10 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
+import net.uxl21.jdatasciencecb.JDSRunnable;
 
-public class TestRecursiveDirectoryTraversal extends CollectCleanRunnable {
+
+public class TestRecursiveDirectoryTraversal extends JDSRunnable {
 	
 	
 	public TestRecursiveDirectoryTraversal(String[] args) {

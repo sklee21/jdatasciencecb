@@ -8,7 +8,9 @@ import com.univocity.parsers.common.processor.RowListProcessor;
 import com.univocity.parsers.tsv.TsvParser;
 import com.univocity.parsers.tsv.TsvParserSettings;
 
-public class UnivocityTSV extends CollectCleanRunnable {
+import net.uxl21.jdatasciencecb.JDSRunnable;
+
+public class UnivocityTSV extends JDSRunnable {
 
 	public UnivocityTSV(String[] args) {
 		super(args);

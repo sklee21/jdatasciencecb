@@ -7,7 +7,9 @@ import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class JSONWriter extends CollectCleanRunnable {
+import net.uxl21.jdatasciencecb.JDSRunnable;
+
+public class JSONWriter extends JDSRunnable {
 
 	public JSONWriter(String[] args) {
 		super(args);

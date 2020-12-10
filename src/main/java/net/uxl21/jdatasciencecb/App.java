@@ -7,8 +7,6 @@ import java.util.Arrays;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import net.uxl21.jdatasciencecb.collectclean.CollectCleanRunnable;
-
 
 /**
  * Hello world!
@@ -34,9 +32,10 @@ public class App {
 	 * Constructor
 	 */
 	public App(String[] args) {
-		this.logger.debug("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx: " + args.length);
+		this.logger.debug("");
+		this.logger.debug("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx: ");
+		this.logger.debug(args.length + " program param(s)");
 		Arrays.stream(args).forEach(this.logger::debug);
-		this.logger.debug("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
 		
     	if( args.length == 0 ) {
     		this.classToRun += this.configSet.getString("defaultClassToRun");
@@ -49,56 +48,34 @@ public class App {
     	} else {
     		this.classToRun += args[0];
     		this.params = Arrays.copyOfRange(args, 1, args.length);
-
-    		//this.logger.debug("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy: " + this.params.length);
-    		//Arrays.stream(this.params).forEach(this.logger::debug);
-    		//this.logger.debug("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n\n");
     	}
+
+    	this.logger.debug("");
+		this.logger.debug(this.params.length + " application param(s)");
+		Arrays.stream(this.params).forEach(this.logger::debug);
+		
+    	this.logger.debug("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
 	}
 	
 	
 	public void run() {
         try {
+        	this.logger.debug("");
+        	this.logger.debug("=====================  START   =====================");
         	this.logger.debug( "Ready to run " + this.classToRun + "..." );
         	
 			Constructor<?> constructor = Class.forName(this.classToRun).getDeclaredConstructor(new Class[] { String[].class });
         	 
 			if( constructor != null ) {
-				this.logger.debug("=======  START   =======");
-        		 
-        		((CollectCleanRunnable)constructor.newInstance(new Object[] { this.params })).run();
-        		 
-        		this.logger.debug("======= FINISHED =======");
+        		((JDSRunnable)constructor.newInstance(new Object[] { this.params })).run();
         	 }
 			
-		} catch (NoSuchMethodException e) {
-			this.logger.error(e);
-			e.printStackTrace();
-			
-		} catch (SecurityException e) {
-			this.logger.error(e);
-			e.printStackTrace();
-			
-		} catch (ClassNotFoundException e) {
-			this.logger.error(e);
-			e.printStackTrace();
-			
-		} catch (InstantiationException e) {
-			this.logger.error(e);
-			e.printStackTrace();
-			
-		} catch (IllegalAccessException e) {
-			this.logger.error(e);
-			e.printStackTrace();
-			
-		} catch (IllegalArgumentException e) {
-			this.logger.error(e);
-			e.printStackTrace();
-			
-		} catch (InvocationTargetException e) {
+		} catch (Exception e) {
 			this.logger.error(e);
 			e.printStackTrace();
 		}
+        
+        this.logger.debug("===================== FINISHED =====================\n");
 	}
 	
 	
