@@ -11,5 +11,7 @@
 	
 	"mysqlUser": "sklee21",
 	"mysqlPswd": "skl21C@!",
-	"mysqlJdbcUrl": "jdbc:mysql://localhost:3306/DATA_SCIENCE?characterEncoding=UTF-8&serverTimezone=UTC"
+	"mysqlJdbcUrl": "jdbc:mysql://localhost:3306/DATA_SCIENCE?characterEncoding=UTF-8&serverTimezone=UTC",
+	
+	"defaultIndexPath": "/Volumes/OPSLAGPLAATS/STUDIE/PROJECTEN/JDATASCIENC/index"
 }
