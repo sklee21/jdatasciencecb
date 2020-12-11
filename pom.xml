@@ -133,13 +133,11 @@
 		    <version>8.7.0</version>
 		</dependency>
 		
-		<!--
 		<dependency>
 		    <groupId>org.apache.lucene</groupId>
 		    <artifactId>lucene-queryparser</artifactId>
 		    <version>8.7.0</version>
 		</dependency>
-		-->
 		
 		<!--
 		<dependency>
@@ -148,6 +146,14 @@
 		    <version>8.7.0</version>
 		</dependency>
 		-->
+		
+		
+		<!-- for 3. Statistics -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-math3</artifactId>
+		    <version>3.6.1</version>
+		</dependency>
 	</dependencies>
 	
 

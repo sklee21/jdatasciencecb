@@ -1,5 +1,6 @@
 package net.uxl21.jdatasciencecb;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
@@ -12,7 +13,7 @@ public class UnitApp {
 
 	public static void main(String[] args) {
 		ConfigSet configSet = ConfigSet.getInstance();
-		Path path = Paths.get(configSet.getString("fileDir"));
+		Path path = Paths.get(configSet.getString("fileDir") + File.separator + "input");
 		
 		try {
 			Files.walkFileTree(path, new SimpleFileVisitor<Path>() {

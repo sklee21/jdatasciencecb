@@ -1,6 +1,7 @@
 package net.uxl21.jdatasciencecb.indexsearch;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -14,6 +15,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Date;
 import java.util.Objects;
 
+import org.apache.commons.lang3.time.StopWatch;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
@@ -48,6 +50,9 @@ public class IndexFiles extends JDSRunnable {
 					return FileVisitResult.CONTINUE;
 				}
 			});
+			
+		} else {
+			indexDocs(writer, path, Files.getLastModifiedTime(path).toMillis());
 		}
 	}
 	
@@ -72,8 +77,8 @@ public class IndexFiles extends JDSRunnable {
 
 	@Override
 	public void run() {
-		String indexPath = "index";
-		String docsPath = null;
+		String indexPath = this.configSet.getString("defaultIndexPath");
+		String docsPath = this.configSet.getString("fileDir");
 		boolean create = true;
 		
 		for( int i=0; i<this.params.length; i++ ) {
@@ -90,7 +95,9 @@ public class IndexFiles extends JDSRunnable {
 		
 		
 		final Path docDir = Paths.get(docsPath);
-		Date start = new Date();
+		
+		StopWatch stopWatch = new StopWatch();
+		stopWatch.start();
 		
 		try {
 			Directory dir = FSDirectory.open(Paths.get(indexPath));
@@ -107,9 +114,8 @@ public class IndexFiles extends JDSRunnable {
 			indexDocs(writer, docDir);
 			writer.close();
 			
-			Date end = new Date();
-			long ellapsedMs = end.getTime() - start.getTime();
-			this.logger.debug("Ellapsed time: " + (ellapsedMs / 1000));
+			stopWatch.stop();
+			this.logger.debug("Ellapsed time: " + stopWatch.formatTime());
 			
 		} catch (IOException e) {
 			e.printStackTrace();

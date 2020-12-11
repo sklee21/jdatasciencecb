@@ -59,6 +59,8 @@ public class App {
 	
 	
 	public void run() {
+		JDSRunnable jdsRun = null;
+		
         try {
         	this.logger.debug("");
         	this.logger.debug("=====================  START   =====================");
@@ -67,7 +69,8 @@ public class App {
 			Constructor<?> constructor = Class.forName(this.classToRun).getDeclaredConstructor(new Class[] { String[].class });
         	 
 			if( constructor != null ) {
-        		((JDSRunnable)constructor.newInstance(new Object[] { this.params })).run();
+				jdsRun = (JDSRunnable)constructor.newInstance(new Object[] { this.params });
+        		jdsRun.run();
         	 }
 			
 		} catch (Exception e) {
