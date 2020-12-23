@@ -3,39 +3,22 @@ package net.uxl21.jdatasciencecb.util;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 
 public class BitArrayMaker {
 	
-	public enum Types {
-		DEC_TO_BIN
-	};
+	
+	public static final int SINGLE_PRECISION_BIAS = 127;
+	
+	public static final int DOUBLE_PRECISION_BIAS = 1023;
 	
 	
-	public enum Bits {
-		
-		BITS_8 (8),
-		BITS_16(16),
-		BITS_32(32),
-		BITS_64(64);
-		
-		
-		private int value;
-		
-		
-		Bits(int value) {
-			this.value = value;
-		}
-
-		public int getValue() {
-			return value;
-		}
-		
-	};
+	public static final int SINGLE_PRECISION_MANTISSA_BITS = 23;
+	
+	public static final int DOUBLE_PRECISION_MANTISSA_BITS = 52;
 	
 	
 	
-	protected ArrayList<String> toBinaryList(long longValue) throws Exception {
+	public static ArrayList<String> toBinaryList(long longValue) throws Exception {
 		long quotient = longValue;
 		long rest;
 		
@@ -58,15 +41,15 @@ public class BitArrayMaker {
 	}
 	
 	
-	protected String[] toBinaryArray(long longValue) throws Exception {
-		return this.toBinaryList(longValue).toArray(new String[0]);
+	public static String[] toBinaryArray(long longValue) throws Exception {
+		return toBinaryList(longValue).toArray(new String[0]);
 	}
 	
 	
-	protected String toBinaryString(long longValue) throws Exception {
+	public static String toBinaryString(long longValue) throws Exception {
 		StringBuffer binStr = new StringBuffer();
 		
-		this.toBinaryList(longValue).forEach(value -> {
+		toBinaryList(longValue).forEach(value -> {
 			binStr.append(value);
 		});
 		
@@ -75,27 +58,27 @@ public class BitArrayMaker {
 	
 	
 	
-	protected ArrayList<String> toBinaryList(int intValue) throws Exception {
-		return this.toBinaryList(Integer.valueOf(intValue).longValue());
+	public static ArrayList<String> toBinaryList(int intValue) throws Exception {
+		return toBinaryList(Integer.valueOf(intValue).longValue());
 	}
 	
 	
-	protected String[] toBinaryArray(int intValue) throws Exception {
-		return this.toBinaryArray(Integer.valueOf(intValue).longValue());
+	public static String[] toBinaryArray(int intValue) throws Exception {
+		return toBinaryArray(Integer.valueOf(intValue).longValue());
 	}
 	
 	
-	protected String toBinaryString(int intValue) throws Exception {
-		return this.toBinaryString(Integer.valueOf(intValue).longValue());
+	public static String toBinaryString(int intValue) throws Exception {
+		return toBinaryString(Integer.valueOf(intValue).longValue());
 	}
 	
 	
 	
 	
-	protected ArrayList<String> toBinaryList(float floatValue) throws Exception {
+	public static ArrayList<String> toBinaryList(float floatValue) throws Exception {
 		int intValue = (int)floatValue;
 		
-		ArrayList<String> bits = this.toBinaryList(intValue);
+		ArrayList<String> bits = toBinaryList(intValue);
 		bits.add(".");
 		
 		float tmpValue = floatValue - intValue;
@@ -139,15 +122,15 @@ public class BitArrayMaker {
 	}
 	
 	
-	protected String[] toBinaryArrays(float floatValue) throws Exception {
-		return this.toBinaryList(floatValue).toArray(new String[0]);
+	public static String[] toBinaryArray(float floatValue) throws Exception {
+		return toBinaryList(floatValue).toArray(new String[0]);
 	}
 	
 	
-	protected String toBinaryString(float floatValue) throws Exception {
+	public static String toBinaryString(float floatValue) throws Exception {
 		StringBuffer binStr = new StringBuffer();
 		
-		this.toBinaryList(floatValue).forEach(value -> {
+		toBinaryList(floatValue).forEach(value -> {
 			binStr.append(value);
 		});
 		
@@ -156,18 +139,18 @@ public class BitArrayMaker {
 	
 	
 	
-	protected ArrayList<String> toFloatingPointBinaryList(float floatValue) throws Exception {
+	public static ArrayList<String> toFloatingPointBinaryList(float floatValue) throws Exception {
 		int intValue = (int)floatValue;
 		
-		ArrayList<String> mantissa = this.toBinaryList(intValue);
+		ArrayList<String> mantissaBits = toBinaryList(intValue);
 		
 		String signBit = floatValue > 0 ? "0" : "1";
-		ArrayList<String> exponentBits = this.toBinaryList(127 + mantissa.size() - 1);
+		ArrayList<String> exponentBits = toBinaryList(SINGLE_PRECISION_BIAS + mantissaBits.size() - 1);
 		
 		float tmpValue = floatValue - intValue;
 		
 		if( tmpValue == 0.0f ) {
-			mantissa.add("0");
+			mantissaBits.add("0");
 		
 		} else {
 			HashSet<Integer> historySet = new HashSet<>();
@@ -177,10 +160,10 @@ public class BitArrayMaker {
 				tmpValue *= 2.0f;
 				
 				if( tmpValue < 1.0f ) {
-					mantissa.add("0");
+					mantissaBits.add("0");
 				
 				} else {
-					mantissa.add("1");
+					mantissaBits.add("1");
 					
 					if( tmpValue == 1.0f ) {
 						break;
@@ -201,31 +184,33 @@ public class BitArrayMaker {
 			}
 		}
 		
-		mantissa.remove(0);
-		int emptyBits = 23 - mantissa.size();
+		mantissaBits.remove(0);
+		int emptyBitCount = SINGLE_PRECISION_MANTISSA_BITS - mantissaBits.size();
 		
-		for(int i=0; i<emptyBits; i++) {
-			mantissa.add("0");
+		for(int i=0; i<emptyBitCount; i++) {
+			mantissaBits.add("0");
 		}
 		
-		ArrayList<String> allBits = new ArrayList<>();
-		allBits.add(signBit);
-		allBits.add("/");
-		allBits.addAll(exponentBits);
-		allBits.add("/");
+		ArrayList<String> floatingPointBits = new ArrayList<>();
+		floatingPointBits.add(signBit);
+		floatingPointBits.addAll(exponentBits);
+		mantissaBits.forEach(bit -> {
+			floatingPointBits.add(bit);
+		});
 		
-		for(int i=0; i<mantissa.size(); i++) {
-			allBits.add(mantissa.get(i));
-		}
-		
-		return allBits;
+		return floatingPointBits;
 	}
 	
 	
-	protected String toFloatingPointBinaryString(float floatValue) throws Exception {
+	public static String[] toFloatingPointBinaryArray(float floatValue) throws Exception {
+		return toFloatingPointBinaryList(floatValue).toArray(new String[0]);
+	}
+	
+	
+	public static String toFloatingPointBinaryString(float floatValue) throws Exception {
 		StringBuffer binStr = new StringBuffer();
 		
-		this.toFloatingPointBinaryList(floatValue).forEach(value -> {
+		toFloatingPointBinaryList(floatValue).forEach(value -> {
 			binStr.append(value);
 		});
 		
@@ -234,18 +219,18 @@ public class BitArrayMaker {
 	
 		
 	
-	protected ArrayList<String> toFloatingPointBinaryList(double doubleValue) throws Exception {
-		long longValue = (int)doubleValue;
+	public static ArrayList<String> toFloatingPointBinaryList(double doubleValue) throws Exception {
+		long longValue = (long)doubleValue;
 		
-		ArrayList<String> mantissa = this.toBinaryList(longValue);
+		ArrayList<String> mantissaBits = toBinaryList(longValue);
 		
 		String signBit = doubleValue > 0 ? "0" : "1";
-		ArrayList<String> exponentBits = this.toBinaryList(1023 + mantissa.size() - 1);
+		ArrayList<String> exponentBits = toBinaryList(DOUBLE_PRECISION_BIAS + mantissaBits.size() - 1);
 		
 		double tmpValue = doubleValue - longValue;
 		
 		if( tmpValue == 0.0f ) {
-			mantissa.add("0");
+			mantissaBits.add("0");
 		
 		} else {
 			HashSet<Integer> historySet = new HashSet<>();
@@ -255,10 +240,10 @@ public class BitArrayMaker {
 				tmpValue *= 2.0f;
 				
 				if( tmpValue < 1.0f ) {
-					mantissa.add("0");
+					mantissaBits.add("0");
 				
 				} else {
-					mantissa.add("1");
+					mantissaBits.add("1");
 					
 					if( tmpValue == 1.0f ) {
 						break;
@@ -279,31 +264,33 @@ public class BitArrayMaker {
 			}
 		}
 		
-		mantissa.remove(0);
-		int emptyBits = 52 - mantissa.size();
+		mantissaBits.remove(0);
+		int emptyBits = DOUBLE_PRECISION_MANTISSA_BITS - mantissaBits.size();
 		
 		for(int i=0; i<emptyBits; i++) {
-			mantissa.add("0");
+			mantissaBits.add("0");
 		}
 		
-		ArrayList<String> allBits = new ArrayList<>();
-		allBits.add(signBit);
-		allBits.add("/");
-		allBits.addAll(exponentBits);
-		allBits.add("/");
+		ArrayList<String> floatingPointBits = new ArrayList<>();
+		floatingPointBits.add(signBit);
+		floatingPointBits.addAll(exponentBits);
+		mantissaBits.forEach(bit -> {
+			floatingPointBits.add(bit);
+		});
 		
-		for(int i=0; i<mantissa.size(); i++) {
-			allBits.add(mantissa.get(i));
-		}
-		
-		return allBits;
+		return floatingPointBits;
 	}
 	
 	
-	protected String toFloatingPointBinaryString(double doubleValue) throws Exception {
+	public static String[] toFloatingPointBinaryArray(double doubleValue) throws Exception {
+		return toFloatingPointBinaryList(doubleValue).toArray(new String[0]);
+	}
+	
+	
+	public static String toFloatingPointBinaryString(double doubleValue) throws Exception {
 		StringBuffer binStr = new StringBuffer();
 		
-		this.toFloatingPointBinaryList(doubleValue).forEach(value -> {
+		toFloatingPointBinaryList(doubleValue).forEach(value -> {
 			binStr.append(value);
 		});
 		
@@ -315,17 +302,15 @@ public class BitArrayMaker {
 
 	
 	public static void main(String[] args) {
-		BitArrayMaker baMaker = new BitArrayMaker();
-		
 		try {
 			System.out.println();
-			System.out.println("baMaker => " + baMaker.toBinaryString(127));
+			System.out.println("baMaker => " + BitArrayMaker.toBinaryString(127));
 			System.out.println("Integer => " + Integer.toBinaryString(128));
 			
 			System.out.println();
-			System.out.println("baMaker => " + baMaker.toBinaryString(69.6875f));
-			System.out.println("baMaker => " + baMaker.toFloatingPointBinaryString(69.6875f));
-			System.out.println("baMaker => " + baMaker.toFloatingPointBinaryString(69.6875d));
+			System.out.println("baMaker => " + BitArrayMaker.toBinaryString(69.6875f));
+			System.out.println("baMaker => " + BitArrayMaker.toFloatingPointBinaryString(69.6875f));
+			System.out.println("baMaker => " + BitArrayMaker.toFloatingPointBinaryString(69.6875d));
 			System.out.println();
 			
 		} catch (Exception e) {

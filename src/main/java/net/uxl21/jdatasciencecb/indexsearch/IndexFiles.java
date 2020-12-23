@@ -1,7 +1,6 @@
 package net.uxl21.jdatasciencecb.indexsearch;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -12,7 +11,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.Date;
 import java.util.Objects;
 
 import org.apache.commons.lang3.time.StopWatch;

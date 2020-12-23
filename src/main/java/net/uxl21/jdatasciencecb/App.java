@@ -1,7 +1,6 @@
 package net.uxl21.jdatasciencecb;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 import org.apache.logging.log4j.LogManager;
@@ -35,7 +34,9 @@ public class App {
 		this.logger.debug("");
 		this.logger.debug("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx: ");
 		this.logger.debug(args.length + " program param(s)");
-		Arrays.stream(args).forEach(this.logger::debug);
+		Arrays.stream(args).forEach(arg -> {
+			this.logger.debug("\t" + arg);
+		});
 		
     	if( args.length == 0 ) {
     		this.classToRun += this.configSet.getString("defaultClassToRun");
@@ -52,7 +53,9 @@ public class App {
 
     	this.logger.debug("");
 		this.logger.debug(this.params.length + " application param(s)");
-		Arrays.stream(this.params).forEach(this.logger::debug);
+		Arrays.stream(this.params).forEach(param -> {
+			this.logger.debug("\t" + param);
+		});
 		
     	this.logger.debug("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
 	}
