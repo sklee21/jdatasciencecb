@@ -13,5 +13,7 @@
 	"mysqlPswd": "skl21C@!",
 	"mysqlJdbcUrl": "jdbc:mysql://localhost:3306/DATA_SCIENCE?characterEncoding=UTF-8&serverTimezone=UTC",
 	
-	"defaultIndexPath": "/Volumes/OPSLAGPLAATS/STUDIE/PROJECTEN/JDATASCIENC/index"
+	"defaultIndexPath": "/Volumes/OPSLAGPLAATS/STUDIE/PROJECTEN/JDATASCIENCE/index",
+	
+	"defaultWekaDataPath": "/Volumes/OPSLAGPLAATS/STUDIE/PROJECTEN/JDATASCIENCE/jdatasciencecb/src/main/resources/weka"
 }

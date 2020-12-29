@@ -154,6 +154,14 @@
 		    <artifactId>commons-math3</artifactId>
 		    <version>3.6.1</version>
 		</dependency>
+		
+		
+		<!-- for 4. Learning from Data -->
+		<dependency>
+		    <groupId>nz.ac.waikato.cms.weka</groupId>
+		    <artifactId>weka-stable</artifactId>
+		    <version>3.8.5</version>
+		</dependency>
 	</dependencies>
 	
 
