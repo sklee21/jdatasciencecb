@@ -7,22 +7,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import net.uxl21.jdatasciencecb.JDSRunnable;
-import net.uxl21.jdatasciencecb.util.ArgsParser;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instances;
 
 public class WekaArff extends JDSRunnable {
 	
-	protected ArgsParser argsParser;
-	
-	
-
 	public WekaArff(String[] args) {
 		super(args);
-		
-		this.argsParser = new ArgsParser(args);
-		this.argsParser.parse();
 	}
 	
 

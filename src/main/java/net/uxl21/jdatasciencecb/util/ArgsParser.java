@@ -50,4 +50,11 @@ public class ArgsParser {
 		return value;
 	}
 
+
+
+	@Override
+	public String toString() {
+		return this.argsMap == null ? "null" : this.argsMap.toString();
+	}
+
 }
