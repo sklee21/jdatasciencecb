@@ -1,8 +1,8 @@
 {
 	"defaultClassToRun": "collectclean.TestRecursiveDirectoryTraversal",
-	"defaultRootDir": "D:\\20_AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb",
+	"defaultRootDir": "C:\\AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb",
 	
-	"fileDir": "D:\\20_AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb\\src\\main\\resources\\files",	
+	"fileDir": "C:\\AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb\\src\\main\\resources\\files",	
 	"txtFileToRead": "THIRDPARTYLICENSEREADME.txt",
 	"pdfFileToRead": "THIRDPARTYLICENSEREADME.pdf",
 	"csvFileToRead": "csv_data.csv",
@@ -13,7 +13,7 @@
 	"mysqlPswd": "skl21C@!",
 	"mysqlJdbcUrl": "jdbc:mysql://localhost:3306/DATA_SCIENCE?characterEncoding=UTF-8&serverTimezone=UTC",
 	
-	"defaultIndexPath": "D:\\20_AMAGRAMMING\\JDATASCIENCE\\index",
+	"defaultIndexPath": "C:\\AMAGRAMMING\\JDATASCIENCE\\index",
 	
-	"defaultWekaDataPath": "D:\\20_AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb\\src\\main\\resources\\weka"
+	"defaultWekaDataPath": "C:\\AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb\\src\\main\\resources\\weka"
 }
