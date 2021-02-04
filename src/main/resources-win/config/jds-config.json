@@ -15,5 +15,7 @@
 	
 	"defaultIndexPath": "C:\\AMAGRAMMING\\JDATASCIENCE\\index",
 	
-	"defaultWekaDataPath": "C:\\AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb\\src\\main\\resources\\weka"
+	"defaultWekaDataPath": "C:\\AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb\\src\\main\\resources\\weka",
+	
+	"defaultJmlDataPath": "C:\\AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb\\src\\main\\resources\\javaml"
 }
