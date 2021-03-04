@@ -15,5 +15,9 @@
 	
 	"defaultIndexPath": "/Volumes/OPSLAGPLAATS/STUDIE/PROJECTEN/JDATASCIENCE/index",
 	
-	"defaultWekaDataPath": "/Volumes/OPSLAGPLAATS/STUDIE/PROJECTEN/JDATASCIENCE/jdatasciencecb/src/main/resources/weka"
+	"defaultWekaDataPath": "/Volumes/OPSLAGPLAATS/STUDIE/PROJECTEN/JDATASCIENCE/jdatasciencecb/src/main/resources/weka",
+	
+	"defaultJmlDataPath": "/Volumes/OPSLAGPLAATS/STUDIE/PROJECTEN/JDATASCIENCE/jdatasciencecb/src/main/resources/javaml",
+	
+	"defaultStanfordDataPath": "/Volumes/OPSLAGPLAATS/STUDIE/PROJECTEN/JDATASCIENCE/jdatasciencecb/src/main/resources/stanford"
 }

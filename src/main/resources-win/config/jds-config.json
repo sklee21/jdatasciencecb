@@ -17,5 +17,7 @@
 	
 	"defaultWekaDataPath": "C:\\AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb\\src\\main\\resources\\weka",
 	
-	"defaultJmlDataPath": "C:\\AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb\\src\\main\\resources\\javaml"
+	"defaultJmlDataPath": "C:\\AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb\\src\\main\\resources\\javaml",
+	
+	"defaultStanfordDataPath": "C:\\AMAGRAMMING\\JDATASCIENCE\\jdatasciencecb\\src\\main\\resources\\stanford"
 }
