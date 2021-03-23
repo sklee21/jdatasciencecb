@@ -30,7 +30,19 @@
 		<repository>
 			<id>jcenter</id>
 			<name>bintray repository</name>
-			<url>https://jcenter.bintray.com/</url>
+			<url>https://jcenter.bintray.com</url>
+		</repository>
+		
+		<repository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo1.maven.org/maven2</url>
+		</repository>
+		
+		<repository>
+			<id>jenabio</id>
+			<name>Jena Bio Repository</name>
+			<url>https://bio.informatik.uni-jena.de/repository/libs-release-oss</url>
 		</repository>
 	</repositories>
 	
@@ -39,7 +51,7 @@
 		<profile>
 			<id>win</id>
 			<activation>
-			    <activeByDefault>true</activeByDefault>
+			    <activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
 				<env>win</env>
@@ -47,6 +59,9 @@
 		</profile>
 		<profile>
 			<id>mac</id>
+			<activation>
+			    <activeByDefault>true</activeByDefault>
+			</activation>
 			<properties>
 				<env>mac</env>
 			</properties>
@@ -185,6 +200,13 @@
 		    <version>0.1.7</version>
 		</dependency>
 		
+		<dependency>
+		    <groupId>tw.edu.ntu.csie</groupId>
+		    <artifactId>libsvm</artifactId>
+		    <version>3.24</version>
+		</dependency>
+		
+		
 		<!-- from local repository -->
 		<dependency>
 		    <groupId>be.abeel</groupId>
@@ -192,11 +214,6 @@
 		    <version>2.9</version>
 		</dependency>
 		
-		<dependency>
-		    <groupId>tw.edu.ntu.csie</groupId>
-		    <artifactId>LIBSVM</artifactId>
-		    <version>3.17</version>
-		</dependency>
 		
 		<!--
 		<dependency>
